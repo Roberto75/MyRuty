@@ -46,6 +46,13 @@ namespace MyApplication
             this.MenuStripTop.Items.Add(menuTopItem);
 
 
+            menuTopItem = new System.Windows.Forms.ToolStripMenuItem();
+            menuTopItem.Text = "Row remove JPG";
+            menuTopItem.Click += RawRemoveJpgOnClick;
+            this.MenuStripTop.Items.Add(menuTopItem);
+
+
+
             //this.open1ToolStripMenuItem.Name = "open1ToolStripMenuItem";
             //this.open1ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             //this.open1ToolStripMenuItem.Text = "open 1";
@@ -75,6 +82,14 @@ namespace MyApplication
             f.Show();
         }
 
+
+        void RawRemoveJpgOnClick(object sender, EventArgs e)
+        {
+            FormRawRemoveJPG f = new FormRawRemoveJPG();
+            f.MdiParent = this;
+            f.WindowState = FormWindowState.Maximized;
+            f.Show();
+        }
 
 
     }

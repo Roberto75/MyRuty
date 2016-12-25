@@ -56,6 +56,12 @@
     <Compile Include="FormM3URelativePath.Designer.cs">
       <DependentUpon>FormM3URelativePath.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRawRemoveJPG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRawRemoveJPG.Designer.cs">
+      <DependentUpon>FormRawRemoveJPG.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSteganografia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormM3URelativePath.resx">
       <DependentUpon>FormM3URelativePath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRawRemoveJPG.resx">
+      <DependentUpon>FormRawRemoveJPG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSteganografia.resx">
       <DependentUpon>FormSteganografia.cs</DependentUpon>

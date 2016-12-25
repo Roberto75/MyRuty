@@ -17,6 +17,18 @@ namespace MyApplication
         public FormRawRemoveJPG()
         {
             InitializeComponent();
+
+            init();
+        }
+
+
+        private void init()
+        {
+            listView1.Columns.Add("",30);
+            listView1.Columns.Add("Name",250);
+            listView1.Columns.Add("Extension",100);
+            listView1.Columns.Add("Length",200);
+            listView1.Columns.Add("CreationTime",150);
         }
 
         private void btnFolder_Click(object sender, EventArgs e)
@@ -37,6 +49,11 @@ namespace MyApplication
             {
                 return false;
             }
+
+
+            listView1.Items.Clear();
+
+          
 
             List<FileInfo> toBeDeleted = new List<FileInfo>();
 
@@ -59,10 +76,15 @@ namespace MyApplication
 
 
                     ListViewItem newItem = new ListViewItem();
-                    newItem.Text = fileJpg.Name;
-                    newItem.Tag = fileJpg;
-                    //newItem.SubItems.Add(fileJpg.Length);
+                    //newItem.Text = fileJpg.Name;
+                    //newItem.Tag = fileJpg;
 
+                    newItem.SubItems.Add(fileJpg.Name);
+                    newItem.SubItems.Add(fileJpg.Extension);
+                    newItem.SubItems.Add(fileJpg.Length.ToString());
+                    newItem.SubItems.Add(fileJpg.CreationTime.ToString());
+
+                    
 
                     listView1.Items.Add(newItem);
 

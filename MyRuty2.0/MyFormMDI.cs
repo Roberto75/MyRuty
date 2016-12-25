@@ -23,6 +23,8 @@ namespace MyApplication
         private void initMenuTop()
         {
 
+            this.Text = "MyRuty - ver. " + this.ProductVersion.ToString();
+
             System.Windows.Forms.ToolStripMenuItem menuTopItem;
             
             menuTopItem = new System.Windows.Forms.ToolStripMenuItem();

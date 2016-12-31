@@ -48,10 +48,22 @@ namespace MyApplication
             this.MenuStripTop.Items.Add(menuTopItem);
 
 
+
+
+
+            
+
+            /*********************************/
             menuTopItem = new System.Windows.Forms.ToolStripMenuItem();
-            menuTopItem.Text = "Row remove JPG";
-            menuTopItem.Click += RawRemoveJpgOnClick;
+            menuTopItem.Text = "Pictures";
             this.MenuStripTop.Items.Add(menuTopItem);
+           
+
+            dropDownItem = new System.Windows.Forms.ToolStripMenuItem();
+            dropDownItem.Text = "File raw remove JPG";
+            dropDownItem.Click += RawRemoveJpgOnClick;
+            menuTopItem.DropDownItems.Add(dropDownItem);
+            
 
 
 

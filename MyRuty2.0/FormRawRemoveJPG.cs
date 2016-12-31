@@ -58,7 +58,7 @@ namespace MyApplication
 
                 if (esito)
                 {
-                    lblCount.Text = String.Format("Found: {0} ",  listView1.Items.Count);
+                    lblCount.Text = String.Format("Found: {0:N0} ", listView1.Items.Count);
                     //listView1.
                 }
             }
@@ -188,8 +188,82 @@ namespace MyApplication
             }
         }
 
+
         #endregion
 
+        private void openFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = getSelectedItem();
+            if (item == null)
+            {
+                return;
+            }
 
+
+            Debug.WriteLine(item.SubItems[1].Text);
+
+            FileInfo fi = (FileInfo)item.Tag;
+
+            System.Diagnostics.Process.Start(fi.Directory.FullName);
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = getSelectedItem();
+            if (item == null)
+            {
+                return;
+            }
+            FileInfo fi = (FileInfo)item.Tag;
+
+            System.Diagnostics.Process.Start(fi.FullName);
+        }
+
+
+        private ListViewItem getSelectedItem()
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                return null;
+            }
+            if (listView1.SelectedItems.Count > 1)
+            {
+                return null;
+            }
+
+            ListViewItem item = listView1.SelectedItems[0];
+
+            return item;
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (listView1.CheckedItems.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show(String.Format("Nessun file selezionato."), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (System.Windows.Forms.MessageBox.Show(String.Format("Confermare la cancellazione di {0:N0} files?", listView1.CheckedItems.Count), System.Windows.Forms.Application.ProductName, System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+
+            foreach (ListViewItem item in listView1.CheckedItems)
+            {
+                FileInfo fi = (FileInfo)item.Tag;
+
+                Debug.WriteLine(fi.FullName);
+
+                Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(fi.FullName, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
+
+            }
+
+
+            MessageBox.Show(String.Format("Cancellazione terminata con succeso."), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

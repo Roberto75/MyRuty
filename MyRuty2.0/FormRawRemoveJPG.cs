@@ -82,7 +82,7 @@ namespace MyApplication
                 option = SearchOption.TopDirectoryOnly;
             }
 
-            foreach (FileInfo fi in folder.EnumerateFiles("*.nef", option))
+            foreach (FileInfo fi in folder.EnumerateFiles("*.nef", option).Union(folder.EnumerateFiles("*.cr2", option)))
             {
                 //Debug.WriteLine(fi.Name);
 

@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml.Serialization;
-using MyPasswords.Models;
 using System.Collections.Generic;
 using System.IO;
+using MyPasswords;
+using System.Diagnostics;
 
 namespace UnitTestProject
 {
@@ -14,24 +15,21 @@ namespace UnitTestProject
         public void TestMethod1()
         {
 
-            MyPasswords.MyPasswordManager manager = new MyPasswords.MyPasswordManager();
+            MyPasswordManager manager = new MyPasswordManager();
 
             for (int i = 0; i < 10; i++)
             {
                 manager.add("user " + i, "password " + i);
             }
 
-            
-
-
-
+            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<MyPassword>));
+            //XmlSerializer xmlSerializer = new XmlSerializer(manager.getPasswordsList().GetType());
             XmlSerializer xmlSerializer = new XmlSerializer(manager.GetType());
             StringWriter textWriter = new StringWriter();
             xmlSerializer.Serialize(textWriter, manager);
             textWriter.Close();
 
-            Console.WriteLine(textWriter.ToString());
-
+            Debug.WriteLine(textWriter.ToString());
         }
     }
 }

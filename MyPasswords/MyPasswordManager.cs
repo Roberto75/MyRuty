@@ -1,4 +1,4 @@
-﻿using MyPasswords.Models;
+﻿using MyPasswords.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,12 @@ using System.Xml.Serialization;
 
 namespace MyPasswords
 {
-    [XmlRoot("root")]
+    [XmlRoot("Root")]
     public class MyPasswordManager
     {
         [XmlArray("MyPasswords")]
-        [XmlArrayItem("MyPassword", typeof(MyPassword))]
+        [XmlArrayItem(typeof(MyPassword), ElementName= "MyPassword")]
         public List<MyPassword> passwordsList;
-
 
         // Constructor
         public MyPasswordManager()
@@ -23,10 +22,10 @@ namespace MyPasswords
         }
 
 
-        /*public List<MyPassword> getPasswordsList()
-        {
-            return passwordsList;
-        }*/
+        //public List<MyPassword> getPasswordsList()
+        //{
+          //  return passwordsList;
+        //}
 
 
         public void add(String username, String password)

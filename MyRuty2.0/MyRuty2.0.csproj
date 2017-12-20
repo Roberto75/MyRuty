@@ -134,6 +134,10 @@
       <Project>{1cfb1797-36c1-4887-b980-747fcc81d6a1}</Project>
       <Name>MyManagerCSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Steganografia\src\ClassLibrary\Steganografia.csproj">
+      <Project>{eab0ff60-fabd-44f2-91e0-7d9c7d909efc}</Project>
+      <Name>Steganografia</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\recycle-bin.png" />

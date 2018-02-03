@@ -80,7 +80,8 @@ namespace MyApplication
             Steganografia.Stego stego;
             stego = new Steganografia.Stego(decoder);
 
-            _password = "angylilli";
+            //_password = "angylilli";
+            _password = "r0b3rt0";
 
             try
             {

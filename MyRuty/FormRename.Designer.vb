@@ -25,6 +25,7 @@ Partial Class FormRename
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormRename))
         Me.UcBrowseFileSystem1 = New MyControlsLibrary.UcBrowseFileSystem()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.chkMP4 = New System.Windows.Forms.CheckBox()
         Me.chkMTS = New System.Windows.Forms.CheckBox()
         Me.chkAVI = New System.Windows.Forms.CheckBox()
         Me.chkMOV = New System.Windows.Forms.CheckBox()
@@ -33,7 +34,7 @@ Partial Class FormRename
         Me.chkCR2 = New System.Windows.Forms.CheckBox()
         Me.btnPreview = New MyControlsLibrary.MyButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.chkMP4 = New System.Windows.Forms.CheckBox()
+        Me.chkGPR = New System.Windows.Forms.CheckBox()
         Me.TabControlDetail.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.panel1.SuspendLayout()
@@ -85,6 +86,7 @@ Partial Class FormRename
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.chkGPR)
         Me.Panel3.Controls.Add(Me.chkMP4)
         Me.Panel3.Controls.Add(Me.chkMTS)
         Me.Panel3.Controls.Add(Me.chkAVI)
@@ -98,6 +100,18 @@ Partial Class FormRename
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(771, 36)
         Me.Panel3.TabIndex = 0
+        '
+        'chkMP4
+        '
+        Me.chkMP4.AutoSize = True
+        Me.chkMP4.Checked = True
+        Me.chkMP4.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkMP4.Location = New System.Drawing.Point(392, 11)
+        Me.chkMP4.Name = "chkMP4"
+        Me.chkMP4.Size = New System.Drawing.Size(51, 17)
+        Me.chkMP4.TabIndex = 7
+        Me.chkMP4.Text = ".MP4"
+        Me.chkMP4.UseVisualStyleBackColor = True
         '
         'chkMTS
         '
@@ -128,7 +142,7 @@ Partial Class FormRename
         Me.chkMOV.AutoSize = True
         Me.chkMOV.Checked = True
         Me.chkMOV.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMOV.Location = New System.Drawing.Point(223, 11)
+        Me.chkMOV.Location = New System.Drawing.Point(445, 11)
         Me.chkMOV.Name = "chkMOV"
         Me.chkMOV.Size = New System.Drawing.Size(53, 17)
         Me.chkMOV.TabIndex = 4
@@ -197,17 +211,17 @@ Partial Class FormRename
         Me.DataGridView1.Size = New System.Drawing.Size(771, 116)
         Me.DataGridView1.TabIndex = 1
         '
-        'chkMP4
+        'chkGPR
         '
-        Me.chkMP4.AutoSize = True
-        Me.chkMP4.Checked = True
-        Me.chkMP4.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMP4.Location = New System.Drawing.Point(392, 11)
-        Me.chkMP4.Name = "chkMP4"
-        Me.chkMP4.Size = New System.Drawing.Size(51, 17)
-        Me.chkMP4.TabIndex = 7
-        Me.chkMP4.Text = ".MP4"
-        Me.chkMP4.UseVisualStyleBackColor = True
+        Me.chkGPR.AutoSize = True
+        Me.chkGPR.Checked = True
+        Me.chkGPR.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkGPR.Location = New System.Drawing.Point(172, 11)
+        Me.chkGPR.Name = "chkGPR"
+        Me.chkGPR.Size = New System.Drawing.Size(52, 17)
+        Me.chkGPR.TabIndex = 8
+        Me.chkGPR.Text = ".GPR"
+        Me.chkGPR.UseVisualStyleBackColor = True
         '
         'FormRename
         '
@@ -245,4 +259,5 @@ Partial Class FormRename
     Friend WithEvents chkAVI As System.Windows.Forms.CheckBox
     Friend WithEvents chkMTS As System.Windows.Forms.CheckBox
     Friend WithEvents chkMP4 As System.Windows.Forms.CheckBox
+    Friend WithEvents chkGPR As CheckBox
 End Class

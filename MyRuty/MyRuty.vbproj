@@ -328,7 +328,7 @@
       <Name>MyControlsLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MyFramework4.5\MyFormsLibrary\MyFormsLibrary.vbproj">
-      <Project>{351B091E-FCE0-4147-812C-CEC11BB58B8A}</Project>
+      <Project>{351b091e-fce0-4147-812c-cec11bb58b8a}</Project>
       <Name>MyFormsLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MyFramework4.5\MyManagerCSharp\MyManagerCSharp.csproj">

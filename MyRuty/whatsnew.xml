@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <whatsnews>
 
+
+  <release number="2.0.1.2" data="01/07/2018" data_base="" >
+    <item data="27/02/2011"  owner="Rutigliano" type="changes" >
+      File rename GoPro  .GPR
+    </item>
+  </release>
   
      <release number="2.0.0.3" data="21/12/2014" data_base="" >
     <item data="27/02/2011"  owner="Rutigliano" type="changes" >

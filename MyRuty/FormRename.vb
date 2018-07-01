@@ -61,6 +61,11 @@
             myFilter &= ".mp4|"
         End If
 
+        'rel 2.0.1.2   01/07/2018  GoPro
+        If chkGPR.Checked Then
+            myFilter &= ".GPR|"
+        End If
+
         If String.IsNullOrEmpty(myFilter) Then
             System.Windows.Forms.MessageBox.Show("Selezionare almeno un tipo di file da processare", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
             Exit Sub

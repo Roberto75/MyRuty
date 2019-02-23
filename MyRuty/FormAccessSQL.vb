@@ -20,7 +20,7 @@ Partial Public Class FormAccessSQL
 
     Public Overrides Function _init(ByRef connection As System.Data.Common.DbConnection, ByRef statusBar As System.Windows.Forms.ToolStripStatusLabel, ByRef progressBar As System.Windows.Forms.ToolStripProgressBar) As Boolean
         MyBase._init(connection, statusBar, progressBar)
-    
+
 
         _removeAllTabPages()
         _manager = New MyManager.Manager()
@@ -44,7 +44,7 @@ Partial Public Class FormAccessSQL
         _removeAllTabPages()
         executeCommandOnDBAccess()
 
-         Me._statusBarUpdate("")
+        Me._statusBarUpdate("")
     End Sub
 
     Public Overrides Function _TabDetailOnClick(ByVal isLoad As Boolean, ByVal e As System.Windows.Forms.TabControlCancelEventArgs) As Boolean
@@ -89,6 +89,9 @@ Partial Public Class FormAccessSQL
         Dim withErrors As Boolean = False
         Dim message As String = ""
         Dim contaComandi As Long = 1
+        Dim contaFailed As Long = 0
+        Dim contaSuccess As Long = 0
+        Dim comandiSuccess As String = ""
 
         _manager._openFileAccess(New System.IO.FileInfo(Me._fileAccess))
         _manager.openConnection()
@@ -100,6 +103,9 @@ Partial Public Class FormAccessSQL
                     Try
                         esito = _manager.mExecuteNoQuery(strSQL).ToString
 
+                        contaSuccess = contaSuccess + 1
+                        comandiSuccess = strSQL & vbCrLf & comandiSuccess
+
                     Catch ex As MyManager.ManagerException
                         temp = vbTab & ex.Message & vbCrLf
                         temp = temp & vbTab & strSQL & vbCrLf
@@ -107,6 +113,7 @@ Partial Public Class FormAccessSQL
                         message = message & String.Format("command #{0:N0}:{1}", contaComandi, temp) & vbCrLf
 
                         withErrors = True
+                        contaFailed = contaFailed + 1
                     End Try
                     Me._statusBarUpdate(String.Format("Command #{0:N0}", contaComandi))
                     contaComandi = contaComandi + 1
@@ -117,6 +124,12 @@ Partial Public Class FormAccessSQL
         End Try
 
         If withErrors Then
+
+            message = String.Format("Su #{0:N0} comandi #{1:N0} sono andati in errore ", contaComandi, contaFailed) & message
+
+            message = message & "*** Comandi eseguiti conn successo ***" & vbCrLf & comandiSuccess
+
+
             _addTabPageWithTextArea("Access *", message)
             Me._statusBarUpdate("Esecuzione termianta con errori")
             System.Windows.Forms.MessageBox.Show("Esecuzione termianta con errori", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error)

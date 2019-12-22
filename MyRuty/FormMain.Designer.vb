@@ -46,22 +46,22 @@ Partial Class FormMain
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.UcMenuLeftStack1)
         Me.SplitContainer2.Size = New System.Drawing.Size(230, 498)
-        Me.SplitContainer2.SplitterDistance = 244
+        Me.SplitContainer2.SplitterDistance = 285
         '
         'SplitContainer1
         '
-        Me.SplitContainer1.Size = New System.Drawing.Size(1035, 498)
+        Me.SplitContainer1.Size = New System.Drawing.Size(956, 498)
         '
         'tabControlMain
         '
-        Me.tabControlMain.Size = New System.Drawing.Size(801, 498)
+        Me.tabControlMain.Size = New System.Drawing.Size(722, 498)
         '
         'UcMenuLeftStack1
         '
         Me.UcMenuLeftStack1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UcMenuLeftStack1.Location = New System.Drawing.Point(0, 0)
         Me.UcMenuLeftStack1.Name = "UcMenuLeftStack1"
-        Me.UcMenuLeftStack1.Size = New System.Drawing.Size(230, 250)
+        Me.UcMenuLeftStack1.Size = New System.Drawing.Size(230, 209)
         Me.UcMenuLeftStack1.TabIndex = 0
         '
         'UcMenuLeftTreeView1
@@ -69,14 +69,14 @@ Partial Class FormMain
         Me.UcMenuLeftTreeView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UcMenuLeftTreeView1.Location = New System.Drawing.Point(0, 0)
         Me.UcMenuLeftTreeView1.Name = "UcMenuLeftTreeView1"
-        Me.UcMenuLeftTreeView1.Size = New System.Drawing.Size(230, 244)
+        Me.UcMenuLeftTreeView1.Size = New System.Drawing.Size(230, 285)
         Me.UcMenuLeftTreeView1.TabIndex = 0
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1035, 544)
+        Me.ClientSize = New System.Drawing.Size(956, 544)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FormMain"
         Me.Text = "Form1"

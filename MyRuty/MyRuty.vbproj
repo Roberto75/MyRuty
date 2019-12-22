@@ -229,6 +229,12 @@
     <Compile Include="FormSteganografia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormSteganografiaV2.Designer.vb">
+      <DependentUpon>FormSteganografiaV2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSteganografiaV2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSyncOutlookWithGoogle.Designer.vb">
       <DependentUpon>FormSyncOutlookWithGoogle.vb</DependentUpon>
     </Compile>
@@ -255,6 +261,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="PasswordItem.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -295,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSteganografia.resx">
       <DependentUpon>FormSteganografia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSteganografiaV2.resx">
+      <DependentUpon>FormSteganografiaV2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

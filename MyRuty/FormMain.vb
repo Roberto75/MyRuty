@@ -28,6 +28,7 @@
                 myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nAgenda", "Agenda")
 
                 myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nSteganografia", "Steganografia")
+                myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nSteganografiaV2", "Steganografia (NEW)")
                 myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nM3UtoFile", "M3U")
                 myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nM3UtoNAS", "M3U on NAS")
                 myNode = Me.UcMenuLeftTreeView1._addNodeLevel_1("nOutlook", "Outlook")
@@ -63,6 +64,8 @@
                 f = New FormSyncOutlookWithGoogle()
             Case "nSteganografia"
                 f = New FormSteganografia()
+            Case "nSteganografiaV2"
+                f = New FormSteganografiaV2()
             Case "nAgenda"
                 f = New FormAgenda()
             Case "nAccessSQL"

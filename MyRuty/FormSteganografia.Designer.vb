@@ -42,12 +42,12 @@ Partial Class FormSteganografia
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.txtMessaggio)
-        Me.TabPage1.Size = New System.Drawing.Size(636, 264)
+        Me.TabPage1.Size = New System.Drawing.Size(734, 293)
         Me.TabPage1.Text = "Messaggio"
         '
         'TabControlDetail
         '
-        Me.TabControlDetail.Size = New System.Drawing.Size(644, 290)
+        Me.TabControlDetail.Size = New System.Drawing.Size(742, 319)
         '
         'panel1
         '
@@ -55,17 +55,17 @@ Partial Class FormSteganografia
         Me.panel1.Controls.Add(Me.Label1)
         Me.panel1.Controls.Add(Me.btnSave)
         Me.panel1.Controls.Add(Me.btnDecode)
-        Me.panel1.Size = New System.Drawing.Size(644, 118)
+        Me.panel1.Size = New System.Drawing.Size(742, 118)
         '
         'SplitContainer1
         '
         Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
-        Me.SplitContainer1.Size = New System.Drawing.Size(644, 437)
+        Me.SplitContainer1.Size = New System.Drawing.Size(742, 466)
         Me.SplitContainer1.SplitterDistance = 143
         '
         'tabPageMain
         '
-        Me.tabPageMain.Size = New System.Drawing.Size(650, 468)
+        Me.tabPageMain.Size = New System.Drawing.Size(748, 497)
         '
         'txtMessaggio
         '
@@ -75,7 +75,7 @@ Partial Class FormSteganografia
         Me.txtMessaggio.Multiline = True
         Me.txtMessaggio.Name = "txtMessaggio"
         Me.txtMessaggio.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtMessaggio.Size = New System.Drawing.Size(630, 258)
+        Me.txtMessaggio.Size = New System.Drawing.Size(728, 287)
         Me.txtMessaggio.TabIndex = 5
         '
         'btnDecode
@@ -103,7 +103,7 @@ Partial Class FormSteganografia
         Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(481, 74)
+        Me.btnSave.Location = New System.Drawing.Point(553, 74)
         Me.btnSave.MyType = MyControlsLibrary.MyButton.ButtonType.btnSave
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(156, 30)
@@ -132,7 +132,7 @@ Partial Class FormSteganografia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(658, 494)
+        Me.ClientSize = New System.Drawing.Size(756, 523)
         Me.Name = "FormSteganografia"
         Me.Text = "FormSteganografia"
         Me.TabPage1.ResumeLayout(False)

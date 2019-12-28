@@ -32,6 +32,8 @@ Partial Class FormSteganografiaV2
         Me.btnDecode = New MyControlsLibrary.MyButton()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.txtMessaggio = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtFilter = New System.Windows.Forms.TextBox()
         Me.TabPage1.SuspendLayout()
         Me.TabControlDetail.SuspendLayout()
         Me.panel1.SuspendLayout()
@@ -61,6 +63,8 @@ Partial Class FormSteganografiaV2
         '
         'panel1
         '
+        Me.panel1.Controls.Add(Me.txtFilter)
+        Me.panel1.Controls.Add(Me.Label2)
         Me.panel1.Controls.Add(Me.txtPassword)
         Me.panel1.Controls.Add(Me.Label1)
         Me.panel1.Controls.Add(Me.btnSave)
@@ -111,7 +115,7 @@ Partial Class FormSteganografiaV2
         Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(610, 67)
+        Me.btnSave.Location = New System.Drawing.Point(594, 58)
         Me.btnSave.MyType = MyControlsLibrary.MyButton.ButtonType.btnSave
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(156, 30)
@@ -127,7 +131,7 @@ Partial Class FormSteganografiaV2
         Me.btnDecode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnDecode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDecode.Image = CType(resources.GetObject("btnDecode.Image"), System.Drawing.Image)
-        Me.btnDecode.Location = New System.Drawing.Point(19, 67)
+        Me.btnDecode.Location = New System.Drawing.Point(19, 58)
         Me.btnDecode.MyType = MyControlsLibrary.MyButton.ButtonType.btnExecute
         Me.btnDecode.Name = "btnDecode"
         Me.btnDecode.Size = New System.Drawing.Size(156, 30)
@@ -140,7 +144,7 @@ Partial Class FormSteganografiaV2
         Me.TabPage2.Controls.Add(Me.txtMessaggio)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(778, 196)
+        Me.TabPage2.Size = New System.Drawing.Size(698, 198)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -153,8 +157,24 @@ Partial Class FormSteganografiaV2
         Me.txtMessaggio.Multiline = True
         Me.txtMessaggio.Name = "txtMessaggio"
         Me.txtMessaggio.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtMessaggio.Size = New System.Drawing.Size(778, 196)
+        Me.txtMessaggio.Size = New System.Drawing.Size(698, 198)
         Me.txtMessaggio.TabIndex = 6
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(16, 106)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(32, 13)
+        Me.Label2.TabIndex = 23
+        Me.Label2.Text = "Filtro:"
+        '
+        'txtFilter
+        '
+        Me.txtFilter.Location = New System.Drawing.Point(78, 103)
+        Me.txtFilter.Name = "txtFilter"
+        Me.txtFilter.Size = New System.Drawing.Size(274, 20)
+        Me.txtFilter.TabIndex = 24
         '
         'FormSteganografiaV2
         '
@@ -191,4 +211,6 @@ Partial Class FormSteganografiaV2
     Friend WithEvents btnDecode As MyControlsLibrary.MyButton
     Friend WithEvents TabPage2 As TabPage
     Private WithEvents txtMessaggio As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtFilter As TextBox
 End Class

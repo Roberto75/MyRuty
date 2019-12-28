@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 Imports System.Xml
 Imports System.Xml.Serialization
 
@@ -8,7 +9,11 @@ Public Class FormSteganografiaV2
     Private _password As String = ""
     Private _pathFile As String
 
-    Property ListaPasswordItem As New List(Of PasswordItem)
+    Property ListaPasswordItem As New BindingList(Of PasswordItem)
+
+    Property DataTablePassword As New DataTable("Passwords")
+
+
 
     Public Overrides Function _init(ByRef connection As System.Data.Common.DbConnection, ByRef statusBar As System.Windows.Forms.ToolStripStatusLabel, ByRef progressBar As System.Windows.Forms.ToolStripProgressBar) As Boolean
         MyBase._init(connection, statusBar, progressBar)
@@ -23,7 +28,6 @@ Public Class FormSteganografiaV2
 
 
 
-
     Private Function InitDataGrid() As Boolean
 
         Trace.WriteLine("InitDataGrid")
@@ -35,9 +39,7 @@ Public Class FormSteganografiaV2
 
         Me.DataGridView1.DataSource = Me.BindingSource1
 
-
         Return True
-
     End Function
 
     Private Function InitDataSource() As Boolean
@@ -45,26 +47,65 @@ Public Class FormSteganografiaV2
 
         'ListaPasswordItem.Add(New PasswordItem("titolo", "roberto", "rutigliano", "email", "url", "nota"))
         'ListaPasswordItem.Add(New PasswordItem("", "angela", "salso", "", "", ""))
+        'BindingSource1.DataSource = ListaPasswordItem
+        Dim colums As New List(Of DataColumn)
+        colums.Add(DataTablePassword.Columns.Add("Titolo", System.Type.GetType("System.String")))
+        colums.Add(DataTablePassword.Columns.Add("Username", System.Type.GetType("System.String")))
+        colums.Add(DataTablePassword.Columns.Add("Password", System.Type.GetType("System.String")))
+        colums.Add(DataTablePassword.Columns.Add("Email", System.Type.GetType("System.String")))
+        colums.Add(DataTablePassword.Columns.Add("URL", System.Type.GetType("System.String")))
+        colums.Add(DataTablePassword.Columns.Add("Nota", System.Type.GetType("System.String")))
+
+        'colums.Add(_dt.Columns.Add("TASK", TypeOf (String)));
+
+        Dim row As DataRow
+        row = DataTablePassword.NewRow()
+        row.Item(0) = "Titolo 1"
+        row.Item(1) = "Username 1"
+        row.Item(2) = "Password 1"
+        row.Item(3) = "Email 1"
+        row.Item(4) = "URL 1"
+        row.Item(5) = "Nota 1"
+        DataTablePassword.Rows.Add(row)
 
 
-        BindingSource1.DataSource = ListaPasswordItem
+        row = DataTablePassword.NewRow()
+        row.Item(0) = "Titolo 2"
+        row.Item(1) = "Username 2"
+        row.Item(2) = "Password 2"
+        DataTablePassword.Rows.Add(row)
 
+
+        BindingSource1.DataSource = DataTablePassword
+        BindingSource1.ResetBindings(False)
         SerializeList()
 
         Return True
     End Function
 
     Private Function SerializeList() As String
-        Trace.WriteLine("SerializeList")
 
-        Dim serializer As New XmlSerializer(GetType(List(Of PasswordItem)))
+
+        Trace.WriteLine("SerializeList [# rows] " + DataTablePassword.Rows.Count.ToString())
+
+
+
+
+
+
+        'Dim serializer As New XmlSerializer(GetType(BindingList(Of PasswordItem)))
+        'Dim sw1 = New StringWriter()
+        'Dim xw As New XmlTextWriter(sw1)
+        'xw.Formatting = Formatting.Indented
+        'xw.Indentation = 4
+        'serializer.Serialize(xw, ListaPasswordItem)
+
+        Dim serializer As New XmlSerializer(GetType(DataTable))
         Dim sw1 = New StringWriter()
-
         Dim xw As New XmlTextWriter(sw1)
         xw.Formatting = Formatting.Indented
         xw.Indentation = 4
-
-        serializer.Serialize(xw, ListaPasswordItem)
+        serializer.Serialize(xw, DataTablePassword)
 
         Console.WriteLine(sw1.ToString())
 
@@ -74,16 +115,38 @@ Public Class FormSteganografiaV2
 
 
 
+
+
+
     Private Function DeserializeList() As Boolean
         Trace.WriteLine("DeserializeList" & txtMessaggio.Text)
 
-        Dim serializer As New XmlSerializer(GetType(List(Of PasswordItem)))
-        Using reader As TextReader = New StringReader(txtMessaggio.Text)
-            ListaPasswordItem = serializer.Deserialize(reader)
-        End Using
+        'Dim serializer As New XmlSerializer(GetType(BindingList(Of PasswordItem)))
+        'Using reader As TextReader = New StringReader(txtMessaggio.Text)
+        '    ListaPasswordItem = serializer.Deserialize(reader)
+        'End Using
+        'BindingSource1.DataSource = ListaPasswordItem
 
 
-        BindingSource1.DataSource = ListaPasswordItem
+
+
+        Try
+
+            Dim serializer As New XmlSerializer(GetType(DataTable))
+
+            Using reader As TextReader = New StringReader(txtMessaggio.Text)
+                DataTablePassword = serializer.Deserialize(reader)
+            End Using
+
+            BindingSource1.DataSource = DataTablePassword
+        Catch ex As Exception
+            'Provo a deserilaizare il messaggio in un DataTable
+            'in caso di errore ... non faccio nulla!
+            Trace.WriteLine(ex)
+            BindingSource1.DataSource = Nothing
+            Windows.Forms.MessageBox.Show("Impossibile convertire il messaggio in un DataTable ", My.Application.Info.ProductName, Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+            Return False
+        End Try
 
 
         Return True
@@ -131,6 +194,7 @@ Public Class FormSteganografiaV2
         Try
             stego.Decode(_pathFile, _password)
         Catch ex As Exception
+            stego.Dispose()
             Windows.Forms.MessageBox.Show(ex.Message, My.Application.Info.ProductName, Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
             Return False
         End Try
@@ -172,6 +236,7 @@ Public Class FormSteganografiaV2
 
 
         DeserializeList()
+        Me.txtFilter.Text = ""
 
         _statusBarUpdate("")
     End Function
@@ -190,10 +255,10 @@ Public Class FormSteganografiaV2
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
-        If String.IsNullOrEmpty(txtMessaggio.Text.Trim) Then
-            Windows.Forms.MessageBox.Show("Il messaggio da codificare è vuoto", My.Application.Info.ProductName, Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-            Exit Sub
-        End If
+        'If String.IsNullOrEmpty(txtMessaggio.Text.Trim) Then
+        ' Windows.Forms.MessageBox.Show("Il messaggio da codificare è vuoto", My.Application.Info.ProductName, Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+        'Exit Sub
+        'End If
 
         If String.IsNullOrEmpty(_pathFile) Then
             If Not _openFileDialog("Immagine (*.bmp;*.tif;*.tiff;*.png)|*.bmp;*.tif;*.tiff;*.png;") Then
@@ -291,4 +356,23 @@ Public Class FormSteganografiaV2
 
     End Function
 
+    Private Sub txtFilter_TextChanged(sender As Object, e As EventArgs) Handles txtFilter.TextChanged
+        Trace.WriteLine("Filter Changed " + CType(sender, TextBox).Text)
+
+
+        BindingSource1.Filter = String.Format("Titolo like '%{0}%' or Nota like '%{0}%'", CType(sender, TextBox).Text)
+
+        'DataGridView1.DataSource = BindingSource1
+        'DataGridView1.Update()
+        'DataGridView1.Refresh()
+
+
+        'ListaPasswordItem As New BindingList(Of PasswordItem)
+
+        'Dim filtered As New BindingList(Of PasswordItem)(ListaPasswordItem.Where(Function(p) p.Titolo.Contains(CType(sender, TextBox).Text)).ToList())
+
+        'BindingSource1.DataSource = filtered
+
+
+    End Sub
 End Class

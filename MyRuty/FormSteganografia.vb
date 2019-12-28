@@ -47,6 +47,7 @@
         Try
             stego.Decode(_pathFile, _password)
         Catch ex As Exception
+            stego.Dispose()
             Windows.Forms.MessageBox.Show(ex.Message, My.Application.Info.ProductName, Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
             Return False
         End Try

@@ -17,7 +17,7 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
-    <ApplicationIcon>Resources\KRUSTY.ICO</ApplicationIcon>
+    <ApplicationIcon>Resources\bart.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -365,6 +365,8 @@
     <Content Include="exiftool.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Bart.png" />
+    <None Include="Resources\bart.ico" />
     <Content Include="Resources\exiftool.exe" />
     <Content Include="whatsnew.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

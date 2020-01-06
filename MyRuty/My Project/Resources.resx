@@ -130,4 +130,10 @@
   <data name="KRUSTY" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KRUSTY.ICO;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BART_ICO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bart.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

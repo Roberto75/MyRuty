@@ -35,9 +35,12 @@ Public Class FormSteganografiaV2
 
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.AllowUserToDeleteRows = True
+        Me.DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
 
 
         Me.DataGridView1.DataSource = Me.BindingSource1
+
+
 
         Return True
     End Function
@@ -236,6 +239,14 @@ Public Class FormSteganografiaV2
 
 
         DeserializeList()
+
+
+        If (BindingSource1.Count > 0) Then
+            DataGridView1.Sort(DataGridView1.Columns.Item(0), ListSortDirection.Ascending)
+        End If
+
+
+
         Me.txtFilter.Text = ""
 
         _statusBarUpdate("")

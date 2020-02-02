@@ -17,7 +17,7 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
-    <ApplicationIcon>Resources\bart.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Bart Simpson 01.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -359,6 +359,7 @@
     <None Include="MyRuty_TemporaryKey.pfx" />
     <None Include="Resources\AgendaEcografia.xlsx" />
     <None Include="Resources\AgendaAmbulatorio.xlsx" />
+    <None Include="Resources\Bart Simpson 01.icns" />
     <None Include="Resources\KRUSTY.ICO" />
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +368,8 @@
     </Content>
     <None Include="Resources\Bart.png" />
     <None Include="Resources\bart.ico" />
+    <None Include="Resources\Bart Simpson 01.png" />
+    <None Include="Resources\Bart Simpson 01.ico" />
     <Content Include="Resources\exiftool.exe" />
     <Content Include="whatsnew.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -136,4 +136,7 @@
   <data name="BART_ICO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bart.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bart_Simpson_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bart Simpson 01.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

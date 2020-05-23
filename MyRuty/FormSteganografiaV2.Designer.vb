@@ -73,6 +73,7 @@ Partial Class FormSteganografiaV2
         '
         'SplitContainer1
         '
+        Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1
         Me.SplitContainer1.Size = New System.Drawing.Size(786, 393)
         Me.SplitContainer1.SplitterDistance = 167
         '
@@ -115,7 +116,7 @@ Partial Class FormSteganografiaV2
         Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(594, 58)
+        Me.btnSave.Location = New System.Drawing.Point(623, 58)
         Me.btnSave.MyType = MyControlsLibrary.MyButton.ButtonType.btnSave
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(156, 30)

@@ -25,6 +25,7 @@ Partial Class FormRename
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormRename))
         Me.UcBrowseFileSystem1 = New MyControlsLibrary.UcBrowseFileSystem()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.chkGPR = New System.Windows.Forms.CheckBox()
         Me.chkMP4 = New System.Windows.Forms.CheckBox()
         Me.chkMTS = New System.Windows.Forms.CheckBox()
         Me.chkAVI = New System.Windows.Forms.CheckBox()
@@ -34,7 +35,7 @@ Partial Class FormRename
         Me.chkCR2 = New System.Windows.Forms.CheckBox()
         Me.btnPreview = New MyControlsLibrary.MyButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.chkGPR = New System.Windows.Forms.CheckBox()
+        Me.chkMPG = New System.Windows.Forms.CheckBox()
         Me.TabControlDetail.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.panel1.SuspendLayout()
@@ -86,6 +87,7 @@ Partial Class FormRename
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.chkMPG)
         Me.Panel3.Controls.Add(Me.chkGPR)
         Me.Panel3.Controls.Add(Me.chkMP4)
         Me.Panel3.Controls.Add(Me.chkMTS)
@@ -100,6 +102,18 @@ Partial Class FormRename
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(771, 36)
         Me.Panel3.TabIndex = 0
+        '
+        'chkGPR
+        '
+        Me.chkGPR.AutoSize = True
+        Me.chkGPR.Checked = True
+        Me.chkGPR.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkGPR.Location = New System.Drawing.Point(172, 11)
+        Me.chkGPR.Name = "chkGPR"
+        Me.chkGPR.Size = New System.Drawing.Size(52, 17)
+        Me.chkGPR.TabIndex = 8
+        Me.chkGPR.Text = ".GPR"
+        Me.chkGPR.UseVisualStyleBackColor = True
         '
         'chkMP4
         '
@@ -211,17 +225,17 @@ Partial Class FormRename
         Me.DataGridView1.Size = New System.Drawing.Size(771, 116)
         Me.DataGridView1.TabIndex = 1
         '
-        'chkGPR
+        'chkMPG
         '
-        Me.chkGPR.AutoSize = True
-        Me.chkGPR.Checked = True
-        Me.chkGPR.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkGPR.Location = New System.Drawing.Point(172, 11)
-        Me.chkGPR.Name = "chkGPR"
-        Me.chkGPR.Size = New System.Drawing.Size(52, 17)
-        Me.chkGPR.TabIndex = 8
-        Me.chkGPR.Text = ".GPR"
-        Me.chkGPR.UseVisualStyleBackColor = True
+        Me.chkMPG.AutoSize = True
+        Me.chkMPG.Checked = True
+        Me.chkMPG.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkMPG.Location = New System.Drawing.Point(504, 11)
+        Me.chkMPG.Name = "chkMPG"
+        Me.chkMPG.Size = New System.Drawing.Size(53, 17)
+        Me.chkMPG.TabIndex = 9
+        Me.chkMPG.Text = ".MPG"
+        Me.chkMPG.UseVisualStyleBackColor = True
         '
         'FormRename
         '
@@ -260,4 +274,5 @@ Partial Class FormRename
     Friend WithEvents chkMTS As System.Windows.Forms.CheckBox
     Friend WithEvents chkMP4 As System.Windows.Forms.CheckBox
     Friend WithEvents chkGPR As CheckBox
+    Friend WithEvents chkMPG As CheckBox
 End Class

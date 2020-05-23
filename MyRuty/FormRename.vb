@@ -66,6 +66,11 @@
             myFilter &= ".GPR|"
         End If
 
+        'rel 2.1.0.2  25/05/2020   Sony di Simone
+        If chkMPG.Checked Then
+            myFilter &= ".MPG|"
+        End If
+
         If String.IsNullOrEmpty(myFilter) Then
             System.Windows.Forms.MessageBox.Show("Selezionare almeno un tipo di file da processare", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
             Exit Sub
@@ -128,10 +133,16 @@
                 'imageCreationDate = imageFileInfo.CreationTime
                 'newFileName = imageCreationDate.ToString("yyyy-MM-dd HH_mm_ss") & imageFileInfo.Extension
 
+                '*** PER VEDEE I NOMI dEI TAG usarte il paremetro -v***
+                'exiftool.exe -v c:\Users\Roberto\Desktop\MOV01117.MPG
 
-                
+
+
+
                 If (f.Extension.ToUpper = ".MOV" OrElse f.Extension.ToUpper = ".MP4") Then
                     commandExiff = String.Format("""exiftool.exe"" -createdate -fast -G -t -m -q ""{0}""", f.FullName)
+                ElseIf (f.Extension.ToUpper = ".MPG") Then
+                    commandExiff = String.Format("""exiftool.exe"" -FileCreateDate -fast -G -t -m -q ""{0}""", f.FullName)
                 Else
                     commandExiff = String.Format("""exiftool.exe"" -DateTimeOriginal -fast -G -t -m -q ""{0}""", f.FullName)
                 End If
@@ -145,10 +156,11 @@
                     temp = temp.Replace(vbTab, "")
 
 
-                    If f.Extension.ToUpper = ".MOV" OrElse f.Extension.ToUpper = ".AVI" OrElse f.Extension.ToUpper = ".MTS" OrElse f.Extension.ToUpper = ".MP4" Then
+                    If f.Extension.ToUpper = ".MOV" OrElse f.Extension.ToUpper = ".AVI" OrElse f.Extension.ToUpper = ".MTS" OrElse f.Extension.ToUpper = ".MP4" OrElse f.Extension.ToUpper = ".MPG" Then
                         temp = temp.Replace("MakerNotesCreate Date", "")
                         temp = temp.Replace("QuickTimeCreate Date", "")
                         temp = temp.Replace("H264Date/Time Original", "")
+                        temp = temp.Replace("FileFile Creation Date/Time", "")
                     Else
                         'temp = temp.Replace("EXIF	Create Date	", "")
                         temp = temp.Replace("EXIFDate/Time Original", "")

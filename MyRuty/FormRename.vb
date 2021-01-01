@@ -34,7 +34,7 @@
         Dim myFilter As String = ""
 
         If chkJPG.Checked Then
-            myFilter &= ".jpg|"
+            myFilter &= ".jpg|.jpeg|"
         End If
 
         If chkCR2.Checked Then

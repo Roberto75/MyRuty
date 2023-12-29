@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <whatsnews>
 
+  <release number="2.2.0" data="29/12/2023" data_base="" >
+    <item data="29/12/2023"  owner="Rutigliano" type="changes" >
+      File rename aggiunto .dng
+    </item>
+    <item data="29/12/2023"  owner="Rutigliano" type="changes" >
+      upgrade exiftool.exe da 11.9.9.0 a 12.7.1.0
+    </item>
+  </release>
+  
   <release number="2.1.2.0" data="01/01/2021" data_base="" >
     <item data="01/01/2021"  owner="Rutigliano" type="changes" >
       File rename aggiunto .jpeg oltre a .jpg

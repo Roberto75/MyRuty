@@ -71,6 +71,11 @@
             myFilter &= ".MPG|"
         End If
 
+        'rel 2.2.0  29/12/2023   GoPro Hero 12
+        If chkDNG.Checked Then
+            myFilter &= ".DNG|"
+        End If
+
         If String.IsNullOrEmpty(myFilter) Then
             System.Windows.Forms.MessageBox.Show("Selezionare almeno un tipo di file da processare", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
             Exit Sub

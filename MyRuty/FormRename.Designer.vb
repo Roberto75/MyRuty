@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormRename
     Inherits MyFormsLibrary.FormBaseDetail_4
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,12 @@ Partial Class FormRename
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormRename))
         Me.UcBrowseFileSystem1 = New MyControlsLibrary.UcBrowseFileSystem()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.chkDNG = New System.Windows.Forms.CheckBox()
         Me.chkMPG = New System.Windows.Forms.CheckBox()
         Me.chkGPR = New System.Windows.Forms.CheckBox()
         Me.chkMP4 = New System.Windows.Forms.CheckBox()
@@ -36,7 +37,7 @@ Partial Class FormRename
         Me.chkCR2 = New System.Windows.Forms.CheckBox()
         Me.btnPreview = New MyControlsLibrary.MyButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.chkDNG = New System.Windows.Forms.CheckBox()
+        Me.btnDNGvsJPG = New MyControlsLibrary.MyButton()
         Me.TabControlDetail.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.panel1.SuspendLayout()
@@ -52,45 +53,41 @@ Partial Class FormRename
         '
         'TabControlDetail
         '
+        Me.TabControlDetail.Cursor = System.Windows.Forms.Cursors.Default
         Me.TabControlDetail.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.TabControlDetail.Size = New System.Drawing.Size(1168, 272)
+        Me.TabControlDetail.Size = New System.Drawing.Size(1580, 340)
         '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.DataGridView1)
         Me.TabPage1.Controls.Add(Me.Panel3)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.TabPage1.Size = New System.Drawing.Size(1160, 239)
+        Me.TabPage1.Size = New System.Drawing.Size(1572, 307)
         Me.TabPage1.Text = "Info"
         '
         'Panel2
         '
-        Me.Panel2.Location = New System.Drawing.Point(0, 272)
+        Me.Panel2.Location = New System.Drawing.Point(0, 340)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.Panel2.Size = New System.Drawing.Size(1198, 60)
+        Me.Panel2.Size = New System.Drawing.Size(1617, 60)
         '
         'panel1
         '
         Me.panel1.Controls.Add(Me.UcBrowseFileSystem1)
         Me.panel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.panel1.Size = New System.Drawing.Size(1198, 230)
+        Me.panel1.Size = New System.Drawing.Size(1617, 279)
         '
         'SplitContainer1
         '
-        Me.SplitContainer1.Location = New System.Drawing.Point(14, 43)
         Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1198, 601)
-        Me.SplitContainer1.SplitterDistance = 255
+        Me.SplitContainer1.Size = New System.Drawing.Size(1617, 718)
+        Me.SplitContainer1.SplitterDistance = 304
         Me.SplitContainer1.SplitterWidth = 14
         '
         'tabPageMain
         '
-        Me.tabPageMain.Location = New System.Drawing.Point(4, 29)
-        Me.tabPageMain.Margin = New System.Windows.Forms.Padding(14, 18, 14, 18)
-        Me.tabPageMain.Padding = New System.Windows.Forms.Padding(14, 18, 14, 18)
-        Me.tabPageMain.Size = New System.Drawing.Size(1226, 662)
+        Me.tabPageMain.Size = New System.Drawing.Size(1645, 781)
         '
         'UcBrowseFileSystem1
         '
@@ -98,11 +95,12 @@ Partial Class FormRename
         Me.UcBrowseFileSystem1.Location = New System.Drawing.Point(0, 0)
         Me.UcBrowseFileSystem1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.UcBrowseFileSystem1.Name = "UcBrowseFileSystem1"
-        Me.UcBrowseFileSystem1.Size = New System.Drawing.Size(1198, 230)
+        Me.UcBrowseFileSystem1.Size = New System.Drawing.Size(1617, 279)
         Me.UcBrowseFileSystem1.TabIndex = 1
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.btnDNGvsJPG)
         Me.Panel3.Controls.Add(Me.chkDNG)
         Me.Panel3.Controls.Add(Me.chkMPG)
         Me.Panel3.Controls.Add(Me.chkGPR)
@@ -118,15 +116,28 @@ Partial Class FormRename
         Me.Panel3.Location = New System.Drawing.Point(6, 8)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1148, 55)
+        Me.Panel3.Size = New System.Drawing.Size(1560, 68)
         Me.Panel3.TabIndex = 0
+        '
+        'chkDNG
+        '
+        Me.chkDNG.AutoSize = True
+        Me.chkDNG.Checked = True
+        Me.chkDNG.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkDNG.Location = New System.Drawing.Point(329, 24)
+        Me.chkDNG.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.chkDNG.Name = "chkDNG"
+        Me.chkDNG.Size = New System.Drawing.Size(75, 24)
+        Me.chkDNG.TabIndex = 10
+        Me.chkDNG.Text = ".DNG"
+        Me.chkDNG.UseVisualStyleBackColor = True
         '
         'chkMPG
         '
         Me.chkMPG.AutoSize = True
         Me.chkMPG.Checked = True
         Me.chkMPG.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMPG.Location = New System.Drawing.Point(801, 17)
+        Me.chkMPG.Location = New System.Drawing.Point(775, 24)
         Me.chkMPG.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMPG.Name = "chkMPG"
         Me.chkMPG.Size = New System.Drawing.Size(75, 24)
@@ -139,7 +150,7 @@ Partial Class FormRename
         Me.chkGPR.AutoSize = True
         Me.chkGPR.Checked = True
         Me.chkGPR.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkGPR.Location = New System.Drawing.Point(242, 17)
+        Me.chkGPR.Location = New System.Drawing.Point(247, 24)
         Me.chkGPR.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkGPR.Name = "chkGPR"
         Me.chkGPR.Size = New System.Drawing.Size(74, 24)
@@ -152,7 +163,7 @@ Partial Class FormRename
         Me.chkMP4.AutoSize = True
         Me.chkMP4.Checked = True
         Me.chkMP4.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMP4.Location = New System.Drawing.Point(633, 17)
+        Me.chkMP4.Location = New System.Drawing.Point(607, 24)
         Me.chkMP4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMP4.Name = "chkMP4"
         Me.chkMP4.Size = New System.Drawing.Size(71, 24)
@@ -165,7 +176,7 @@ Partial Class FormRename
         Me.chkMTS.AutoSize = True
         Me.chkMTS.Checked = True
         Me.chkMTS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMTS.Location = New System.Drawing.Point(546, 17)
+        Me.chkMTS.Location = New System.Drawing.Point(520, 24)
         Me.chkMTS.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMTS.Name = "chkMTS"
         Me.chkMTS.Size = New System.Drawing.Size(72, 24)
@@ -178,7 +189,7 @@ Partial Class FormRename
         Me.chkAVI.AutoSize = True
         Me.chkAVI.Checked = True
         Me.chkAVI.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAVI.Location = New System.Drawing.Point(468, 17)
+        Me.chkAVI.Location = New System.Drawing.Point(442, 24)
         Me.chkAVI.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkAVI.Name = "chkAVI"
         Me.chkAVI.Size = New System.Drawing.Size(66, 24)
@@ -191,7 +202,7 @@ Partial Class FormRename
         Me.chkMOV.AutoSize = True
         Me.chkMOV.Checked = True
         Me.chkMOV.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMOV.Location = New System.Drawing.Point(713, 17)
+        Me.chkMOV.Location = New System.Drawing.Point(687, 24)
         Me.chkMOV.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMOV.Name = "chkMOV"
         Me.chkMOV.Size = New System.Drawing.Size(75, 24)
@@ -204,7 +215,7 @@ Partial Class FormRename
         Me.chkNEF.AutoSize = True
         Me.chkNEF.Checked = True
         Me.chkNEF.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkNEF.Location = New System.Drawing.Point(172, 17)
+        Me.chkNEF.Location = New System.Drawing.Point(177, 24)
         Me.chkNEF.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkNEF.Name = "chkNEF"
         Me.chkNEF.Size = New System.Drawing.Size(71, 24)
@@ -217,7 +228,7 @@ Partial Class FormRename
         Me.chkJPG.AutoSize = True
         Me.chkJPG.Checked = True
         Me.chkJPG.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkJPG.Location = New System.Drawing.Point(4, 17)
+        Me.chkJPG.Location = New System.Drawing.Point(9, 24)
         Me.chkJPG.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkJPG.Name = "chkJPG"
         Me.chkJPG.Size = New System.Drawing.Size(70, 24)
@@ -230,7 +241,7 @@ Partial Class FormRename
         Me.chkCR2.AutoSize = True
         Me.chkCR2.Checked = True
         Me.chkCR2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCR2.Location = New System.Drawing.Point(87, 17)
+        Me.chkCR2.Location = New System.Drawing.Point(92, 24)
         Me.chkCR2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkCR2.Name = "chkCR2"
         Me.chkCR2.Size = New System.Drawing.Size(71, 24)
@@ -247,7 +258,7 @@ Partial Class FormRename
         Me.btnPreview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPreview.Image = CType(resources.GetObject("btnPreview.Image"), System.Drawing.Image)
-        Me.btnPreview.Location = New System.Drawing.Point(884, 5)
+        Me.btnPreview.Location = New System.Drawing.Point(1082, 14)
         Me.btnPreview.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnPreview.MyType = MyControlsLibrary.MyButton.ButtonType.btnPreview
         Me.btnPreview.Name = "btnPreview"
@@ -260,30 +271,35 @@ Partial Class FormRename
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 63)
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 76)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1148, 168)
+        Me.DataGridView1.RowHeadersWidth = 62
+        Me.DataGridView1.Size = New System.Drawing.Size(1560, 223)
         Me.DataGridView1.TabIndex = 1
         '
-        'chkDNG
+        'btnDNGvsJPG
         '
-        Me.chkDNG.AutoSize = True
-        Me.chkDNG.Checked = True
-        Me.chkDNG.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkDNG.Location = New System.Drawing.Point(324, 17)
-        Me.chkDNG.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.chkDNG.Name = "chkDNG"
-        Me.chkDNG.Size = New System.Drawing.Size(75, 24)
-        Me.chkDNG.TabIndex = 10
-        Me.chkDNG.Text = ".DNG"
-        Me.chkDNG.UseVisualStyleBackColor = True
+        Me.btnDNGvsJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDNGvsJPG.BackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatAppearance.BorderSize = 0
+        Me.btnDNGvsJPG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDNGvsJPG.Image = CType(resources.GetObject("btnDNGvsJPG.Image"), System.Drawing.Image)
+        Me.btnDNGvsJPG.Location = New System.Drawing.Point(1323, 14)
+        Me.btnDNGvsJPG.MyType = MyControlsLibrary.MyButton.ButtonType.btnExecute
+        Me.btnDNGvsJPG.Name = "btnDNGvsJPG"
+        Me.btnDNGvsJPG.Size = New System.Drawing.Size(234, 46)
+        Me.btnDNGvsJPG.TabIndex = 11
+        Me.btnDNGvsJPG.Text = "DNG vs JPG"
+        Me.btnDNGvsJPG.UseVisualStyleBackColor = False
         '
         'FormRename
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1234, 695)
+        Me.ClientSize = New System.Drawing.Size(1653, 814)
         Me.Margin = New System.Windows.Forms.Padding(21, 28, 21, 28)
         Me.Name = "FormRename"
         Me.Text = "FormRename"
@@ -319,4 +335,5 @@ Partial Class FormRename
     Friend WithEvents chkGPR As CheckBox
     Friend WithEvents chkMPG As CheckBox
     Friend WithEvents chkDNG As CheckBox
+    Friend WithEvents btnDNGvsJPG As MyControlsLibrary.MyButton
 End Class

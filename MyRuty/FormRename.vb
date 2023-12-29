@@ -1,4 +1,8 @@
-﻿Public Class FormRename
+﻿Imports System.IO
+Imports System.Net.WebRequestMethods
+Imports System.Runtime.InteropServices.WindowsRuntime
+
+Public Class FormRename
 
     Public Overrides Function _init(ByRef connection As System.Data.Common.DbConnection, ByRef statusBar As System.Windows.Forms.ToolStripStatusLabel, ByRef progressBar As System.Windows.Forms.ToolStripProgressBar) As Boolean
         MyBase._init(connection, statusBar, progressBar)
@@ -9,15 +13,19 @@
 
         UcBrowseFileSystem1._init()
 
-        Dim index As Integer
-        index = DataGridView1.Columns.Add("fileName", "Name")
+        'Dim index As Integer
+        'index = DataGridView1.Columns.Add("fileName", "Name")
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
 
-        index = DataGridView1.Columns.Add("fileReName", "Rename")
+
 
 
         btnNuovoDetail.Visible = False
+        btnNuovoDetail.MyType = MyControlsLibrary.MyButton.ButtonType.btnDelete
+        btnNuovoDetail.Text = "Delete JPG"
+
+        btnSalvaDetail.Visible = False
         btnSalvaDetail.Text = "Rename"
 
         If Not IO.File.Exists(Application.StartupPath & "\exiftool.exe") Then
@@ -27,9 +35,10 @@
         Return True
     End Function
 
-    Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
-        Dim files As List(Of IO.FileInfo)
 
+
+    Private Function getFiles() As List(Of IO.FileInfo)
+        Dim files As List(Of IO.FileInfo)
 
         Dim myFilter As String = ""
 
@@ -78,13 +87,32 @@
 
         If String.IsNullOrEmpty(myFilter) Then
             System.Windows.Forms.MessageBox.Show("Selezionare almeno un tipo di file da processare", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
-            Exit Sub
+            Return Nothing
         End If
 
 
         myFilter = myFilter.Substring(0, myFilter.Length - 1)
 
         files = UcBrowseFileSystem1._getListFiles(myFilter)
+
+        Return files
+
+    End Function
+
+
+    Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
+
+        Dim index As Integer
+        DataGridView1.Columns.Clear()
+        btnNuovoDetail.Visible = False
+        btnSalvaDetail.Visible = False
+        index = DataGridView1.Columns.Add("fileName", "Name")
+        index = DataGridView1.Columns.Add("fileReName", "Rename")
+
+
+        Dim files As List(Of IO.FileInfo)
+
+        files = getFiles()
 
         Dim row As System.Windows.Forms.DataGridViewRow
 
@@ -192,7 +220,7 @@
                             Date.TryParseExact(temp, "yyyy:MM:dd HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, dateTime)
                         End If
 
-                        
+
 
                         newFileName = dateTime.ToString(MyDateTimeFormat) & imageFileInfo.Extension
 
@@ -245,6 +273,8 @@
             conta = conta + 1
         Next
         Me._statusBarUpdate("Preview completed")
+        btnNuovoDetail.Visible = False
+        btnSalvaDetail.Visible = True
     End Sub
 
     Public Overrides Function _checkFieldBeforeSaveDetailOnClick(ByVal tab As System.Windows.Forms.TabPage) As Boolean
@@ -368,6 +398,110 @@ STEP1:
         Return output.Trim
     End Function
 
-   
-    
+
+
+    Private Sub cleanDNGvsJPG()
+        ' cerco i file JPG e DNG con lo stesso nome.
+        ' rinomino i JPG per poi eventualmente cancellarli
+
+        Dim folder As String = UcBrowseFileSystem1._getFolder()
+        If (folder Is Nothing) Then
+            Return
+        End If
+
+        Dim fileNames() As String
+        fileNames = Directory.GetFiles(folder)
+
+
+        Dim fileGroups = fileNames.GroupBy(Function(x) Path.GetFileNameWithoutExtension(x))
+
+        btnNuovoDetail.Visible = False
+        btnSalvaDetail.Visible = False
+        Dim conta As Long = 1
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add("fileNameDNG", "File DNG")
+        DataGridView1.Columns.Add("fileNameJPG", "File JPG (TO BE DELETED)")
+
+        Me.DataGridView1.Rows.Clear()
+        Dim row As System.Windows.Forms.DataGridViewRow
+
+        Dim newRowIndex As Long
+
+
+        For Each f In fileGroups
+            If (f.Count = 2) Then
+                Console.WriteLine(f.Key & " --> COUNT =" & f.Count)
+                Dim fileNameDNG As String = f.Key & ".dng"
+                Dim fileNameJPG As String = f.Key & ".jpg"
+
+                If (IO.File.Exists(folder & fileNameDNG)) Then
+                    'se esiste anche lo stesso file nel formato jpg allora lo cancello
+                    If (IO.File.Exists(folder & fileNameJPG)) Then
+                        Console.WriteLine("DELETED -->" & fileNameJPG)
+
+
+                        newRowIndex = DataGridView1.Rows.Add()
+
+
+                        row = DataGridView1.Rows(newRowIndex)
+                        row.Cells(0).Value = fileNameDNG
+                        row.Cells(0).Style.ForeColor = Color.Green
+
+                        row.Cells(1).Value = fileNameJPG
+                        row.Cells(1).Style.ForeColor = Color.Red
+
+
+
+                        Me._statusBarUpdate(String.Format("Files to be deleted {0:N0}", conta))
+                        conta += 1
+                    End If
+                End If
+            End If
+
+        Next
+        Me._statusBarUpdate(String.Format("Files to be deleted {0:N0} completed", conta - 1))
+        btnSalvaDetail.Visible = False
+        btnNuovoDetail.Visible = True
+
+    End Sub
+
+    Private Sub btnDNGvsJPG_Click(sender As Object, e As EventArgs) Handles btnDNGvsJPG.Click
+        cleanDNGvsJPG()
+    End Sub
+
+
+    Protected Overrides Function _btnNuovoDetailOnClick(tab As TabPage) As Boolean
+
+        If System.Windows.Forms.MessageBox.Show(String.Format("Confermare la cancellazione di {0:N0} files JPG?", DataGridView1.RowCount - 1), My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OKCancel, System.Windows.Forms.MessageBoxIcon.Question) <> Windows.Forms.DialogResult.OK Then
+            Return False
+        End If
+
+        If DataGridView1.RowCount = 1 Then
+            Return False
+        End If
+
+        Dim folder As String = UcBrowseFileSystem1._getFolder()
+        Dim fileNameDNG As String
+        Dim fileNameJPG As String
+        Dim conta As Long = 1
+        For Each row As System.Windows.Forms.DataGridViewRow In DataGridView1.Rows
+            fileNameDNG = row.Cells(0).Value
+            fileNameJPG = row.Cells(1).Value
+
+            If (IO.File.Exists(folder & fileNameDNG)) Then
+                'se esiste anche lo stesso file nel formato jpg allora lo cancello
+                If (IO.File.Exists(folder & fileNameJPG)) Then
+                    Console.WriteLine("DELETED -->" & fileNameJPG)
+                    My.Computer.FileSystem.RenameFile(folder & fileNameJPG, "DELETED_" & fileNameJPG)
+
+
+                    Me._statusBarUpdate(String.Format("File deleted {0:N0}/{1:N0}", conta, DataGridView1.RowCount - 1))
+                    conta += 1
+                End If
+            End If
+
+        Next
+
+    End Function
+
 End Class

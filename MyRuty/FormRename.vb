@@ -85,6 +85,12 @@ Public Class FormRename
             myFilter &= ".DNG|"
         End If
 
+        'rel 2.2.1  06/09/2025   IPhone HEIC
+        If chkHEIC.Checked Then
+            myFilter &= ".HEIC|"
+        End If
+
+
         If String.IsNullOrEmpty(myFilter) Then
             System.Windows.Forms.MessageBox.Show("Selezionare almeno un tipo di file da processare", My.Application.Info.ProductName, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning)
             Return Nothing

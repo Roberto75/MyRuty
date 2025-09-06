@@ -25,6 +25,7 @@ Partial Class FormRename
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormRename))
         Me.UcBrowseFileSystem1 = New MyControlsLibrary.UcBrowseFileSystem()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnDNGvsJPG = New MyControlsLibrary.MyButton()
         Me.chkDNG = New System.Windows.Forms.CheckBox()
         Me.chkMPG = New System.Windows.Forms.CheckBox()
         Me.chkGPR = New System.Windows.Forms.CheckBox()
@@ -37,7 +38,7 @@ Partial Class FormRename
         Me.chkCR2 = New System.Windows.Forms.CheckBox()
         Me.btnPreview = New MyControlsLibrary.MyButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnDNGvsJPG = New MyControlsLibrary.MyButton()
+        Me.chkHEIC = New System.Windows.Forms.CheckBox()
         Me.TabControlDetail.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.panel1.SuspendLayout()
@@ -100,6 +101,7 @@ Partial Class FormRename
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.chkHEIC)
         Me.Panel3.Controls.Add(Me.btnDNGvsJPG)
         Me.Panel3.Controls.Add(Me.chkDNG)
         Me.Panel3.Controls.Add(Me.chkMPG)
@@ -119,6 +121,23 @@ Partial Class FormRename
         Me.Panel3.Size = New System.Drawing.Size(1560, 68)
         Me.Panel3.TabIndex = 0
         '
+        'btnDNGvsJPG
+        '
+        Me.btnDNGvsJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDNGvsJPG.BackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatAppearance.BorderSize = 0
+        Me.btnDNGvsJPG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btnDNGvsJPG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDNGvsJPG.Image = CType(resources.GetObject("btnDNGvsJPG.Image"), System.Drawing.Image)
+        Me.btnDNGvsJPG.Location = New System.Drawing.Point(1323, 14)
+        Me.btnDNGvsJPG.MyType = MyControlsLibrary.MyButton.ButtonType.btnExecute
+        Me.btnDNGvsJPG.Name = "btnDNGvsJPG"
+        Me.btnDNGvsJPG.Size = New System.Drawing.Size(234, 46)
+        Me.btnDNGvsJPG.TabIndex = 11
+        Me.btnDNGvsJPG.Text = "DNG vs JPG"
+        Me.btnDNGvsJPG.UseVisualStyleBackColor = False
+        '
         'chkDNG
         '
         Me.chkDNG.AutoSize = True
@@ -137,7 +156,7 @@ Partial Class FormRename
         Me.chkMPG.AutoSize = True
         Me.chkMPG.Checked = True
         Me.chkMPG.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMPG.Location = New System.Drawing.Point(775, 24)
+        Me.chkMPG.Location = New System.Drawing.Point(863, 24)
         Me.chkMPG.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMPG.Name = "chkMPG"
         Me.chkMPG.Size = New System.Drawing.Size(75, 24)
@@ -163,7 +182,7 @@ Partial Class FormRename
         Me.chkMP4.AutoSize = True
         Me.chkMP4.Checked = True
         Me.chkMP4.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMP4.Location = New System.Drawing.Point(607, 24)
+        Me.chkMP4.Location = New System.Drawing.Point(695, 24)
         Me.chkMP4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMP4.Name = "chkMP4"
         Me.chkMP4.Size = New System.Drawing.Size(71, 24)
@@ -176,7 +195,7 @@ Partial Class FormRename
         Me.chkMTS.AutoSize = True
         Me.chkMTS.Checked = True
         Me.chkMTS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMTS.Location = New System.Drawing.Point(520, 24)
+        Me.chkMTS.Location = New System.Drawing.Point(608, 24)
         Me.chkMTS.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMTS.Name = "chkMTS"
         Me.chkMTS.Size = New System.Drawing.Size(72, 24)
@@ -189,7 +208,7 @@ Partial Class FormRename
         Me.chkAVI.AutoSize = True
         Me.chkAVI.Checked = True
         Me.chkAVI.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAVI.Location = New System.Drawing.Point(442, 24)
+        Me.chkAVI.Location = New System.Drawing.Point(530, 24)
         Me.chkAVI.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkAVI.Name = "chkAVI"
         Me.chkAVI.Size = New System.Drawing.Size(66, 24)
@@ -202,7 +221,7 @@ Partial Class FormRename
         Me.chkMOV.AutoSize = True
         Me.chkMOV.Checked = True
         Me.chkMOV.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMOV.Location = New System.Drawing.Point(687, 24)
+        Me.chkMOV.Location = New System.Drawing.Point(775, 24)
         Me.chkMOV.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkMOV.Name = "chkMOV"
         Me.chkMOV.Size = New System.Drawing.Size(75, 24)
@@ -278,22 +297,18 @@ Partial Class FormRename
         Me.DataGridView1.Size = New System.Drawing.Size(1560, 223)
         Me.DataGridView1.TabIndex = 1
         '
-        'btnDNGvsJPG
+        'chkHEIC
         '
-        Me.btnDNGvsJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDNGvsJPG.BackColor = System.Drawing.Color.Transparent
-        Me.btnDNGvsJPG.FlatAppearance.BorderSize = 0
-        Me.btnDNGvsJPG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.btnDNGvsJPG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.btnDNGvsJPG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDNGvsJPG.Image = CType(resources.GetObject("btnDNGvsJPG.Image"), System.Drawing.Image)
-        Me.btnDNGvsJPG.Location = New System.Drawing.Point(1323, 14)
-        Me.btnDNGvsJPG.MyType = MyControlsLibrary.MyButton.ButtonType.btnExecute
-        Me.btnDNGvsJPG.Name = "btnDNGvsJPG"
-        Me.btnDNGvsJPG.Size = New System.Drawing.Size(234, 46)
-        Me.btnDNGvsJPG.TabIndex = 11
-        Me.btnDNGvsJPG.Text = "DNG vs JPG"
-        Me.btnDNGvsJPG.UseVisualStyleBackColor = False
+        Me.chkHEIC.AutoSize = True
+        Me.chkHEIC.Checked = True
+        Me.chkHEIC.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkHEIC.Location = New System.Drawing.Point(412, 26)
+        Me.chkHEIC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.chkHEIC.Name = "chkHEIC"
+        Me.chkHEIC.Size = New System.Drawing.Size(78, 24)
+        Me.chkHEIC.TabIndex = 12
+        Me.chkHEIC.Text = ".HEIC"
+        Me.chkHEIC.UseVisualStyleBackColor = True
         '
         'FormRename
         '
@@ -336,4 +351,5 @@ Partial Class FormRename
     Friend WithEvents chkMPG As CheckBox
     Friend WithEvents chkDNG As CheckBox
     Friend WithEvents btnDNGvsJPG As MyControlsLibrary.MyButton
+    Friend WithEvents chkHEIC As CheckBox
 End Class
